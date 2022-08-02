@@ -1,0 +1,171 @@
+--------------------------------------------------------------------------------
+
+* Timeline
+# much more time
+$ vol -f mem-win10.vmem timeliner.Timeliner --create-bodyfile
+
+# much more time
+$ log2timeline.py --storage-file disk.plaso <vm-name>-disk.raw
+
+# Merge the volatility bodyfile with the disk.plaso file using log2timeline and the mactime parser
+$ log2timeline.py --parser=mactime --storage-file=disk.plaso volatility.body
+
+# Create a super timeline in output format CSV with psort
+$ psort.py -o l2tcsv -w super-timeline.csv disk.plaso "date > '2022-07-23 00:00:00'"
+
+--------------------------------------------------------------------------------
+
+* Convert disk format
+$ qemu-img convert -f vmdk -O raw <vm-name>-disk.vmdk <vm-name>-disk.raw
+
+--------------------------------------------------------------------------------
+
+* Memory
+$ vol -f <vm-name>.vmem windows.info
+$ vol -f <vm-name>.vmem windows.pstree.PsTree
+$ vol -f <vm-name>.vmem windows.pslist --pid 4932
+$ vol -f <vm-name>.vmem windows.pslist --pid 4932 --dump
+$ vol -f <vm-name>.vmem windows.dlllist.DllList --pid 6456
+$ vol -f <vm-name>.vmem windows.dlllist.DllList --pid 6456 --dump
+$ vol -f <vm-name>.vmem windows.getsids.GetSIDs --pid 3488 6456 4932
+$ vol -f <vm-name>.vmem windows.registry.hivelist.HiveList
+$ vol -f <vm-name>.vmem windows.registry.printkey.PrintKey --offset 0xa78dc01a6000 --key AtomicRedTeam
+
+--------------------------------------------------------------------------------
+* EventLogs
+# Parsing one file
+$ EvtxECmd.exe -f Security.evtx --csv 'D:\Cases\'
+
+# Parsing multiple files
+$ EvtxECmd.exe -d 'I:\Windows\System32\winevt\Logs\' --csv 'D:\Cases\Analysis\EventLogs\'
+
+--------------------------------------------------------------------------------
+
+* Execution
+# Parsing one file Prefetch
+$ PECmd.exe -f 'D:\Cases\I\Windows\prefetch\ATOMICSERVICE.EXE-CFFBD82A.pf'
+
+# Parsing multiple prefetch (directory)
+$ PECmd.exe -d 'D:\Cases\I\Windows\prefetch\' --csv 'D:\Cases\Analysis\Execution\prefetch\'
+
+# Amcache parsing
+$ AmcacheParser.exe -f Amcache.hve --csv 'D:\Cases\'
+
+# Parsing appcombatcache
+$ AppCompatCacheParser.exe -f SYSTEM --csv 'D:\Cases\'
+
+--------------------------------------------------------------------------------
+
+* NTFS
+# Parsing $MFT file
+$ MFTECmd.exe -f $MFT --csv D:\Cases\ --csvf MFT.csv
+
+$ MFTECmd.exe -f '$Extend\$J' -m $MFT --csv 'D:\Cases\'
+$ MFTECmd.exe -f $MFT --de 124544
+$ MFTECmd.exe -f $MFT --csv 'D:\Cases\' --csvf MFT.csv
+
+--------------------------------------------------------------------------------
+
+* RegRipper:
+# Example parsing one file registry hive using winver plugin
+$ rip.exe -r Path\To\SOFTWARE -p winver
+
+# Hiển thị thuộc tính ẩn của tệp
+$ attrib *
+
+
+# Bỏ thuộc tính ẩn của tệp
+$ attrib -h <filename>
+
+# Parsing multiple registry hive file: put all registry hive file in same folder
+$ for /r %i in (*) do (path\to\rip.exe -r %i -a > %i.txt)
+
+--------------------------------------------------------------------------------
+
+# Artifacts collection. Lưu ý: Ổ đĩa I: và thư mục D:\Cases chỉ là minh họa
+$ kape.exe --tsource I: --tdest D:\Cases --tflush --target KapeTriage --ifw --gui
+
+--------------------------------------------------------------------------------
+
+* Disk and Memory - Data Acquisition
+1. Memory Acquisition
+# Pause (Virtualbox) or Suspend (VMWare) machine
+
+# Đối với VMWare
+- Copy "<vm-name>-Snapshot2.vmem" và "<vm-name>-Snapshot2.vmsn".
+
+# Đối với Virtualbox
+$ vboxmanage list vms
+$ vboxmanage debugvm <vm-uuid> dumpvmcore --filename <vm-name>-mem.raw
+
+# Tạo tệp txt chứa hash/checksum
+$ sha1sum <memory-file> > checksum.txt
+$ Get-FileHash <memory-file> -Algorithm SHA1 | Out-File checksum.txt
+
+
+2. Disk Acquisition
+# Tắt/Power-off máy ảo (Quan trọng)
+
+# Đối với VMWare
+- Join/Merge các tệp disk/vmdk của máy ảo (sử dụng công cụ vmware-vdiskmanager). Giả sử ta có các tệp disk máy ảo như sau:
+	+ <vm-name>-disk1.vmdk: Tệp này là tệp gốc (base) lúc tạo máy ảo
+	+ <vm-name>-disk1-000001.vmdk: Tệp này chứa những thay đổi disk ở bản snapshot 1
+	+ <vm-name>-disk1-000002.vmdk: Tệp này chứa những thay đổi disk ở bản snapshot 2
+=> Giờ ta sẽ gộp 3 tệp này lại thành 1 tệp .vmdk duy nhất. Giả sử cần thu thập disk máy ảo ở thời điểm snapshot 2.
+- Mở CMD quyền Administrator và nhập:
+$ pushd "path\to\vm\"
+$ vmware-vdiskmanager -r <vm-name>-disk1-000002.vmdk -t 0 <vm-name>-Disk.vmdk
+=> Kết quả được tệp "<vm-name>-Disk.vmdk" là gộp lại của 3 tệp *.vmdk => Dung lượng tệp tổng này có thể sẽ bằng xấp xỉ 3 tệp kia cộng lại.
+
+# Đối với Virtualbox
+$ vboxmanage list hdds
+$ vboxmanage clonemedium disk {disk-uuid} --format VHD <vm-name>-disk.vhd
+
+# Tạo tệp txt chứa hash/checksum
+$ sha1sum <disk-file> >> checksum.txt
+$ Get-FileHash <disk-file> -Algorithm SHA1 | Out-File -Append checksum.txt
+
+
+3. Xem thêm tại: https://github.com/bluecapesecurity/PWF
+
+--------------------------------------------------------------------------------
+
+* Sysmon installation
+PS C:\Users\IEUser\Desktop\PWF-main\Install-Sysmon> .\Install-Sysmon.ps1
+[+] Processing Sysmon Installation..
+...
+
+--------------------------------------------------------------------------------
+
+* AtomicRedTeam
+PS C:\Users\IEUser\Desktop\PWF-main\AtomicRedTeam> .\ART-attack.ps1
+Installing AtomicRedTeam
+...
+
+--------------------------------------------------------------------------------
+* Default user credential:
+	username: IEUser
+	password: Passw0rd!
+
+* Với VMWare khi snapshot sẽ tạo ra:
+	+ <vm-name>-disk1-000001.vmdk: Chứa những thay đổi về disk
+	+ <vm-name>-Snapshot1.vmsn: Chứa metadata của bản snapshot
+
+* VMWare khi snapshot ở trạng thái running
+	+ <vm-name>-Snapshot2.vmem: Chứa bộ nhớ RAM của máy ảo
+	+ <vm-name>-Snapshot2.vmsn: Chứa metadata của bản snapshot
+	
+(Ghi chú: 000001, Snapshot1, Snapshot2 chỉ là ví dụ về số thứ tự bản snapshot)
+
+--------------------------------------------------------------------------------
+
+* Tip for using MS Excel to analysis csv file
+1. Data > Filter để bật bộ lọc
+2. View > Freeze Panes > Freeze Top Row để cố định dòng đầu tiên là dòng header
+3. Đối với các cột có dữ liệu là nhãn thời gian nếu chưa được format đúng thì cần custom format lại:
+	Chọn cột chứa dữ liệu là thời gian > Right click > Format Cell > Category > Custom > Type: yyyy-mm-dd hh:mm:ss
+4. Format lại cho màu mè: Ctrl+A > Format as Table.
+5. Format lại kích độ rộng ô: Ctrl+A > Format > Autofit colums width
+6. Save as lại tất cả ra một file .xlsx mới thay vì .csv như cũ (xlsx cho dung lượng file nhẹ hơn rất nhiều)
+
+--------------------------------------------------------------------------------

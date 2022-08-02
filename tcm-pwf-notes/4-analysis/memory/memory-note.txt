@@ -1,0 +1,688 @@
+$ vol -f mem-win10.vmem windows.info
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+Variable        Value
+
+Kernel Base     0xf80345e9f000
+DTB     0x1aa000
+Symbols file:///home/<user>/volatility3/.venv/lib/python3.8/site-packages/volatility3-2.3.0-py3.8.egg/volatility3/symbols/windows/ntkrnlmp.pdb/8B11040A5928757B11390AC78F6B6925-1.json.xz
+Is64Bit True
+IsPAE   False
+layer_name      0 WindowsIntel32e
+memory_layer    1 VmwareLayer
+base_layer      2 FileLayer
+meta_layer      2 FileLayer
+KdVersionBlock  0xf803462a1dc0
+Major/Minor     15.17763
+MachineType     34404
+KeNumberProcessors      4
+SystemTime      2022-07-24 15:35:55
+NtSystemRoot    C:\Windows
+NtProductType   NtProductWinNt
+NtMajorVersion  10
+NtMinorVersion  0
+PE MajorOperatingSystemVersion  10
+PE MinorOperatingSystemVersion  0
+PE Machine      34404
+PE TimeDateStamp        Thu Oct 28 12:04:50 2060
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.pstree.PsTree
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime
+
+4       0       System  0xdf0d63a6d1c0  131     -       N/A     False   2022-07-24 15:15:35.000000      N/A
+* 104   4       Registry        0xdf0d63abb080  4       -       N/A     False   2022-07-24 15:15:31.000000      N/A
+* 1600  4       MemCompression  0xdf0d63b9e040  58      -       N/A     False   2022-07-24 15:15:40.000000      N/A
+* 316   4       smss.exe        0xdf0d659840c0  2       -       N/A     False   2022-07-24 15:15:35.000000      N/A
+412     404     csrss.exe       0xdf0d69849140  10      -       0       False   2022-07-24 15:15:38.000000      N/A
+508     404     wininit.exe     0xdf0d68e0f080  1       -       0       False   2022-07-24 15:15:38.000000      N/A
+* 676   508     lsass.exe       0xdf0d69845180  10      -       0       False   2022-07-24 15:15:38.000000      N/A
+* 660   508     services.exe    0xdf0d68e0d080  7       -       0       False   2022-07-24 15:15:38.000000      N/A
+** 1540 660     svchost.exe     0xdf0d63ac8080  3       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 1032 660     svchost.exe     0xdf0d69829380  3       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 1528 660     svchost.exe     0xdf0d689c0380  7       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 1040 660     svchost.exe     0xdf0d68b32380  4       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 2604 660     svchost.exe     0xdf0d63ac6080  19      -       0       False   2022-07-24 15:15:41.000000      N/A
+** 6188 660     svchost.exe     0xdf0d6a979080  6       -       0       False   2022-07-24 15:15:55.000000      N/A
+** 5164 660     svchost.exe     0xdf0d65596500  5       -       0       False   2022-07-24 15:20:12.000000      N/A
+** 1072 660     svchost.exe     0xdf0d68676340  5       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 2612 660     svchost.exe     0xdf0d69729240  7       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 2104 660     spoolsv.exe     0xdf0d698920c0  9       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 4664 660     SgrmBroker.exe  0xdf0d6a240080  3       -       0       False   2022-07-24 15:17:47.000000      N/A
+** 1088 660     svchost.exe     0xdf0d686783c0  5       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 2624 660     svchost.exe     0xdf0d69f28080  15      -       0       False   2022-07-24 15:15:41.000000      N/A
+** 2632 660     svchost.exe     0xdf0d69f27080  24      -       0       False   2022-07-24 15:15:41.000000      N/A
+** 2124 660     svchost.exe     0xdf0d68c773c0  8       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 8784 660     svchost.exe     0xdf0d6bf14080  1       -       0       False   2022-07-24 15:16:37.000000      N/A
+** 4688 660     svchost.exe     0xdf0d69fb7080  0       -       0       False   2022-07-24 15:18:39.000000      2022-07-24 15:20:40.000000
+** 1628 660     svchost.exe     0xdf0d686e13c0  8       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 6244 660     MsMpEng.exe     0xdf0d69f86080  33      -       0       False   2022-07-24 15:26:55.000000      N/A
+** 2684 660     ruby.exe        0xdf0d69f25080  9       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 1152 660     svchost.exe     0xdf0d6894f300  13      -       0       False   2022-07-24 15:15:39.000000      N/A
+*** 4100        1152    taskhostw.exe   0xdf0d69b8e400  8       -       1       False   2022-07-24 15:15:46.000000      N/A
+** 4736 660     SearchIndexer.  0xdf0d69d86300  16      -       0       False   2022-07-24 15:15:48.000000      N/A
+** 8324 660     Sysmon.exe      0xdf0d6a87c080  14      -       0       False   2022-07-24 15:19:07.000000      N/A
+** 1676 660     svchost.exe     0xdf0d63b86080  3       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 2700 660     svchost.exe     0xdf0d69f24080  8       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 1688 660     svchost.exe     0xdf0d63b80080  4       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 4760 660     sppsvc.exe      0xdf0d69f2a080  4       -       0       False   2022-07-24 15:30:43.000000      N/A
+** 2724 660     svchost.exe     0xdf0d69f22080  3       -       0       False   2022-07-24 15:15:42.000000      N/A
+** 3748 660     msdtc.exe       0xdf0d6a871080  9       -       0       False   2022-07-24 15:15:44.000000      N/A
+** 2216 660     svchost.exe     0xdf0d68a2c380  17      -       0       False   2022-07-24 15:15:41.000000      N/A
+** 2732 660     VGAuthService.  0xdf0d69732080  2       -       0       False   2022-07-24 15:15:42.000000      N/A
+** 1712 660     svchost.exe     0xdf0d63b7e080  3       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 4276 660     svchost.exe     0xdf0d69be7340  5       -       0       False   2022-07-24 15:15:46.000000      N/A
+*** 4344        4276    ctfmon.exe      0xdf0d6935c380  9       -       1       False   2022-07-24 15:15:46.000000      N/A
+** 1720 660     svchost.exe     0xdf0d6a5e5540  24      -       0       False   2022-07-24 15:17:46.000000      N/A
+** 1724 660     svchost.exe     0xdf0d63b7c080  5       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 7356 660     svchost.exe     0xdf0d6a5a1300  16      -       0       False   2022-07-24 15:16:04.000000      N/A
+** 2240 660     svchost.exe     0xdf0d68a303c0  5       -       0       False   2022-07-24 15:15:41.000000      N/A
+** 5824 660     svchost.exe     0xdf0d6a23f080  9       -       0       False   2022-07-24 15:15:54.000000      N/A
+** 1220 660     svchost.exe     0xdf0d69446300  7       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 2756 660     vm3dservice.ex  0xdf0d69731080  2       -       0       False   2022-07-24 15:15:42.000000      N/A
+*** 2968        2756    vm3dservice.ex  0xdf0d69f85080  2       -       1       False   2022-07-24 15:15:42.000000      N/A
+** 2272 660     svchost.exe     0xdf0d69f82080  5       -       0       False   2022-07-24 15:15:42.000000      N/A
+** 2788 660     wlms.exe        0xdf0d6972e080  2       -       0       False   2022-07-24 15:15:42.000000      N/A
+** 4324 660     svchost.exe     0xdf0d69be9380  8       -       0       False   2022-07-24 15:15:46.000000      N/A
+** 7396 660     svchost.exe     0xdf0d6bb0d080  9       -       0       False   2022-07-24 15:16:05.000000      N/A
+** 3840 660     svchost.exe     0xdf0d6a97e080  3       -       0       False   2022-07-24 15:15:55.000000      N/A
+*** 6176        3840    Windows.WARP.J  0xdf0d6a97a080  2       -       0       False   2022-07-24 15:15:55.000000      N/A
+** 1796 660     svchost.exe     0xdf0d63b22080  6       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 2828 660     svchost.exe     0xdf0d69b47300  9       -       0       False   2022-07-24 15:15:46.000000      N/A
+** 784  660     svchost.exe     0xdf0d6920e300  2       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 2832 660     vmtoolsd.exe    0xdf0d69fb0080  13      -       0       False   2022-07-24 15:15:42.000000      N/A
+*** 6008        2832    cmd.exe 0xdf0d6bdf5080  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000
+**** 1784       6008    conhost.exe     0xdf0d6c5ce540  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000
+**** 4364       6008    ipconfig.exe    0xdf0d65e73540  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000
+** 1316 660     svchost.exe     0xdf0d68dd8300  7       -       0       False   2022-07-24 15:15:40.000000      N/A
+*** 3968        1316    sihost.exe      0xdf0d6a86d080  13      -       1       False   2022-07-24 15:15:46.000000      N/A
+** 1828 660     svchost.exe     0xdf0d6883b380  12      -       0       False   2022-07-24 15:15:40.000000      N/A
+** 808  660     svchost.exe     0xdf0d698273c0  4       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 4904 660     svchost.exe     0xdf0d6992f080  6       -       0       False   2022-07-24 15:26:10.000000      N/A
+** 1324 660     svchost.exe     0xdf0d68dd63c0  9       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 2860 660     svchost.exe     0xdf0d69fad080  10      -       0       False   2022-07-24 15:15:42.000000      N/A
+** 1848 660     svchost.exe     0xdf0d691a9380  12      -       0       False   2022-07-24 15:15:40.000000      N/A
+** 828  660     svchost.exe     0xdf0d69210080  19      -       0       False   2022-07-24 15:15:39.000000      N/A
+*** 6536        828     MicrosoftEdgeC  0xdf0d6b7eb0c0  16      -       1       False   2022-07-24 15:15:56.000000      N/A
+*** 5520        828     RuntimeBroker.  0xdf0d6a247080  13      -       1       False   2022-07-24 15:15:53.000000      N/A
+*** 5140        828     ShellExperienc  0xdf0d6a86f080  26      -       1       False   2022-07-24 15:15:51.000000      N/A
+*** 5396        828     RuntimeBroker.  0xdf0d6a249080  11      -       1       False   2022-07-24 15:15:52.000000      N/A
+*** 1428        828     SkypeHelper.ex  0xdf0d6a151080  4       -       1       False   2022-07-24 15:33:50.000000      N/A
+*** 4116        828     RuntimeBroker.  0xdf0d65e6b080  7       -       1       False   2022-07-24 15:35:23.000000      N/A
+*** 5272        828     SearchUI.exe    0xdf0d6a24a080  39      -       1       False   2022-07-24 15:15:51.000000      N/A
+*** 6428        828     RuntimeBroker.  0xdf0d69ced240  3       -       1       False   2022-07-24 15:15:56.000000      N/A
+**** 6592       6428    MicrosoftEdgeS  0xdf0d6b7e9080  9       -       1       False   2022-07-24 15:15:56.000000      N/A
+*** 2340        828     RuntimeBroker.  0xdf0d6547a400  9       -       1       False   2022-07-24 15:35:18.000000      N/A
+*** 5036        828     RuntimeBroker.  0xdf0d6b7e0080  5       -       1       False   2022-07-24 15:16:00.000000      N/A
+*** 8748        828     RuntimeBroker.  0xdf0d6b9570c0  3       -       1       False   2022-07-24 15:22:03.000000      N/A
+*** 7728        828     RuntimeBroker.  0xdf0d6890a0c0  7       -       1       False   2022-07-24 15:34:58.000000      N/A
+*** 3764        828     Skype4Life.exe  0xdf0d6a982080  41      -       1       False   2022-07-24 15:33:46.000000      N/A
+*** 7352        828     backgroundTask  0xdf0d687f5080  8       -       1       False   2022-07-24 15:34:57.000000      N/A
+*** 2620        828     WindowsInterna  0xdf0d6a24c080  33      -       1       False   2022-07-24 15:25:22.000000      N/A
+*** 5696        828     ApplicationFra  0xdf0d6a243080  9       -       1       False   2022-07-24 15:15:54.000000      N/A
+*** 6848        828     RuntimeBroker.  0xdf0d699af140  5       -       1       False   2022-07-24 15:15:58.000000      N/A
+*** 9156        828     backgroundTask  0xdf0d6a3fe080  15      -       1       False   2022-07-24 15:35:17.000000      N/A
+*** 5704        828     MicrosoftEdge.  0xdf0d6a2450c0  24      -       1       False   2022-07-24 15:15:54.000000      N/A
+*** 6088        828     browser_broker  0xdf0d6a981080  7       -       1       False   2022-07-24 15:15:54.000000      N/A
+*** 8400        828     backgroundTask  0xdf0d6a3fd540  8       -       1       False   2022-07-24 15:35:54.000000      N/A
+*** 7512        828     smartscreen.ex  0xdf0d6bbed080  11      -       1       False   2022-07-24 15:16:08.000000      N/A
+*** 6232        828     dllhost.exe     0xdf0d6beda440  7       -       1       False   2022-07-24 15:16:17.000000      N/A
+*** 8292        828     unsecapp.exe    0xdf0d6a861080  3       -       0       False   2022-07-24 15:19:07.000000      N/A
+*** 3568        828     WmiPrvSE.exe    0xdf0d6a876080  10      -       0       False   2022-07-24 15:15:43.000000      N/A
+*** 7664        828     SystemSettings  0xdf0d6b6f4080  3       -       1       False   2022-07-24 15:16:09.000000      N/A
+*** 9204        828     backgroundTask  0xdf0d6b63f080  10      -       1       False   2022-07-24 15:35:23.000000      N/A
+** 4932 660     AtomicService.  0xdf0d6a983080  3       -       0       False   2022-07-24 15:22:43.000000      N/A
+** 7496 660     svchost.exe     0xdf0d69fac080  38      -       0       False   2022-07-24 15:30:44.000000      N/A
+*** 7164        7496            rundll32.exe    0xdf0d6b860080  6       -       1       False   2022-07-24 15:35:22.000000      N/A
+** 7504 660     svchost.exe     0xdf0d68ed4540  8       -       0       False   2022-07-24 15:17:47.000000      N/A
+** 9052 660     svchost.exe     0xdf0d6b7e2080  5       -       0       False   2022-07-24 15:17:46.000000      N/A
+** 356  660     svchost.exe     0xdf0d69883500  7       -       0       False   2022-07-24 15:17:48.000000      N/A
+** 7012 660     svchost.exe     0xdf0d69ba6080  12      -       0       False   2022-07-24 15:30:41.000000      N/A
+** 1896 660     svchost.exe     0xdf0d6b7dc080  6       -       1       False   2022-07-24 15:17:46.000000      N/A
+** 3436 660     dllhost.exe     0xdf0d6a87a080  12      -       0       False   2022-07-24 15:15:43.000000      N/A
+** 8048 660     svchost.exe     0xdf0d6b7e4080  4       -       0       False   2022-07-24 15:19:01.000000      N/A
+** 8060 660     svchost.exe     0xdf0d6bf5b380  4       -       0       False   2022-07-24 15:16:25.000000      N/A
+** 2944 660     svchost.exe     0xdf0d69f87080  11      -       0       False   2022-07-24 15:15:42.000000      N/A
+** 3984 660     svchost.exe     0xdf0d690130c0  5       -       1       False   2022-07-24 15:15:46.000000      N/A
+** 912  660     svchost.exe     0xdf0d6bed5080  30      -       0       False   2022-07-24 15:18:45.000000      N/A
+** 9108 660     svchost.exe     0xdf0d6a87d080  8       -       0       False   2022-07-24 15:16:43.000000      N/A
+** 5012 660     svchost.exe     0xdf0d6a97c080  5       -       0       False   2022-07-24 15:32:14.000000      N/A
+** 1948 660     svchost.exe     0xdf0d691be380  3       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 1440 660     svchost.exe     0xdf0d69878380  12      -       0       False   2022-07-24 15:15:40.000000      N/A
+** 1960 660     svchost.exe     0xdf0d691c1380  8       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 3496 660     svchost.exe     0xdf0d69b35400  9       -       1       False   2022-07-24 15:15:46.000000      N/A
+** 940  660     svchost.exe     0xdf0d695af380  12      -       0       False   2022-07-24 15:15:39.000000      N/A
+** 5060 660     svchost.exe     0xdf0d69d993c0  8       -       1       False   2022-07-24 15:15:49.000000      N/A
+** 7124 660     svchost.exe     0xdf0d6a29e080  5       -       0       False   2022-07-24 15:17:47.000000      N/A
+** 1496 660     svchost.exe     0xdf0d689be380  6       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 984  660     svchost.exe     0xdf0d68f66380  5       -       0       False   2022-07-24 15:15:39.000000      N/A
+** 2016 660     svchost.exe     0xdf0d6562b500  4       -       0       False   2022-07-24 15:30:46.000000      N/A
+** 2020 660     svchost.exe     0xdf0d69b3c300  8       -       0       False   2022-07-24 15:15:46.000000      N/A
+** 1520 660     svchost.exe     0xdf0d689c1080  6       -       0       False   2022-07-24 15:15:40.000000      N/A
+** 7672 660     SecurityHealth  0xdf0d6bbee080  14      -       0       False   2022-07-24 15:16:09.000000      N/A
+** 3580 660     NisSrv.exe      0xdf0d6a873080  4       -       0       False   2022-07-24 15:27:03.000000      N/A
+* 812   508     fontdrvhost.ex  0xdf0d6920f080  5       -       0       False   2022-07-24 15:15:39.000000      N/A
+524     516     csrss.exe       0xdf0d68e22180  11      -       1       False   2022-07-24 15:15:38.000000      N/A
+616     516     winlogon.exe    0xdf0d6985e080  3       -       1       False   2022-07-24 15:15:38.000000      N/A
+* 4632  616     userinit.exe    0xdf0d693a8440  0       -       1       False   2022-07-24 15:15:47.000000      2022-07-24 15:16:18.000000
+** 4712 4632    explorer.exe    0xdf0d693b1440  94      -       1       False   2022-07-24 15:15:48.000000      N/A
+*** 7632        4712    SecurityHealth  0xdf0d6b927480  3       -       1       False   2022-07-24 15:16:08.000000      N/A
+*** 420 4712    OneDrive.exe    0xdf0d6a877080  22      -       1       False   2022-07-24 15:16:16.000000      N/A
+**** 9100       420     Microsoft.Shar  0xdf0d69f81080  0       -       1       False   2022-07-24 15:16:43.000000      2022-07-24 15:16:52.000000
+*** 8124        4712    vmtoolsd.exe    0xdf0d6bddd080  11      -       1       False   2022-07-24 15:16:13.000000      N/A
+*** 3488        4712    powershell.exe  0xdf0d6a1cf0c0  14      -       1       False   2022-07-24 15:18:39.000000      N/A
+**** 7616       3488    HOSTNAME.EXE    0xdf0d69d98080  0       -       1       False   2022-07-24 15:22:40.000000      2022-07-24 15:22:40.000000
+**** 1516       3488    conhost.exe     0xdf0d6a1d2080  4       -       1       False   2022-07-24 15:18:39.000000      N/A
+* 436   616     dwm.exe         0xdf0d699b0080  18      -       1       False   2022-07-24 15:15:39.000000      N/A
+* 820   616     fontdrvhost.ex  0xdf0d69211200  5       -       1       False   2022-07-24 15:15:39.000000      N/A
+6456    5936    notepad.exe     0xdf0d6a878080  3       -       1       False   2022-07-24 15:22:47.000000      N/A
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+$ vol -f mem-win10.vmem windows.pslist.PsList
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output
+
+4       0       System  0xdf0d63a6d1c0  131     -       N/A     False   2022-07-24 15:15:35.000000      N/A     Disabled
+104     4       Registry        0xdf0d63abb080  4       -       N/A     False   2022-07-24 15:15:31.000000      N/A     Disabled
+316     4       smss.exe        0xdf0d659840c0  2       -       N/A     False   2022-07-24 15:15:35.000000      N/A     Disabled
+412     404     csrss.exe       0xdf0d69849140  10      -       0       False   2022-07-24 15:15:38.000000      N/A     Disabled
+508     404     wininit.exe     0xdf0d68e0f080  1       -       0       False   2022-07-24 15:15:38.000000      N/A     Disabled
+524     516     csrss.exe       0xdf0d68e22180  11      -       1       False   2022-07-24 15:15:38.000000      N/A     Disabled
+616     516     winlogon.exe    0xdf0d6985e080  3       -       1       False   2022-07-24 15:15:38.000000      N/A     Disabled
+660     508     services.exe    0xdf0d68e0d080  7       -       0       False   2022-07-24 15:15:38.000000      N/A     Disabled
+676     508     lsass.exe       0xdf0d69845180  10      -       0       False   2022-07-24 15:15:38.000000      N/A     Disabled
+784     660     svchost.exe     0xdf0d6920e300  2       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+820     616     fontdrvhost.ex  0xdf0d69211200  5       -       1       False   2022-07-24 15:15:39.000000      N/A     Disabled
+812     508     fontdrvhost.ex  0xdf0d6920f080  5       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+828     660     svchost.exe     0xdf0d69210080  19      -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+940     660     svchost.exe     0xdf0d695af380  12      -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+984     660     svchost.exe     0xdf0d68f66380  5       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+436     616     dwm.exe         0xdf0d699b0080  18      -       1       False   2022-07-24 15:15:39.000000      N/A     Disabled
+808     660     svchost.exe     0xdf0d698273c0  4       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1032    660     svchost.exe     0xdf0d69829380  3       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1072    660     svchost.exe     0xdf0d68676340  5       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1088    660     svchost.exe     0xdf0d686783c0  5       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1152    660     svchost.exe     0xdf0d6894f300  13      -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1220    660     svchost.exe     0xdf0d69446300  7       -       0       False   2022-07-24 15:15:39.000000      N/A     Disabled
+1316    660     svchost.exe     0xdf0d68dd8300  7       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1324    660     svchost.exe     0xdf0d68dd63c0  9       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1496    660     svchost.exe     0xdf0d689be380  6       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1520    660     svchost.exe     0xdf0d689c1080  6       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1528    660     svchost.exe     0xdf0d689c0380  7       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1540    660     svchost.exe     0xdf0d63ac8080  3       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1600    4       MemCompression  0xdf0d63b9e040  58      -       N/A     False   2022-07-24 15:15:40.000000      N/A     Disabled
+1628    660     svchost.exe     0xdf0d686e13c0  8       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1676    660     svchost.exe     0xdf0d63b86080  3       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1688    660     svchost.exe     0xdf0d63b80080  4       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1712    660     svchost.exe     0xdf0d63b7e080  3       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1724    660     svchost.exe     0xdf0d63b7c080  5       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1796    660     svchost.exe     0xdf0d63b22080  6       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1828    660     svchost.exe     0xdf0d6883b380  12      -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1848    660     svchost.exe     0xdf0d691a9380  12      -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1948    660     svchost.exe     0xdf0d691be380  3       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1960    660     svchost.exe     0xdf0d691c1380  8       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1040    660     svchost.exe     0xdf0d68b32380  4       -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+1440    660     svchost.exe     0xdf0d69878380  12      -       0       False   2022-07-24 15:15:40.000000      N/A     Disabled
+2104    660     spoolsv.exe     0xdf0d698920c0  9       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2124    660     svchost.exe     0xdf0d68c773c0  8       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2216    660     svchost.exe     0xdf0d68a2c380  17      -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2240    660     svchost.exe     0xdf0d68a303c0  5       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2604    660     svchost.exe     0xdf0d63ac6080  19      -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2612    660     svchost.exe     0xdf0d69729240  7       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2624    660     svchost.exe     0xdf0d69f28080  15      -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2632    660     svchost.exe     0xdf0d69f27080  24      -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2684    660     ruby.exe        0xdf0d69f25080  9       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2700    660     svchost.exe     0xdf0d69f24080  8       -       0       False   2022-07-24 15:15:41.000000      N/A     Disabled
+2724    660     svchost.exe     0xdf0d69f22080  3       -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2732    660     VGAuthService.  0xdf0d69732080  2       -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2756    660     vm3dservice.ex  0xdf0d69731080  2       -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2788    660     wlms.exe        0xdf0d6972e080  2       -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2832    660     vmtoolsd.exe    0xdf0d69fb0080  13      -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2860    660     svchost.exe     0xdf0d69fad080  10      -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2944    660     svchost.exe     0xdf0d69f87080  11      -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2968    2756    vm3dservice.ex  0xdf0d69f85080  2       -       1       False   2022-07-24 15:15:42.000000      N/A     Disabled
+2272    660     svchost.exe     0xdf0d69f82080  5       -       0       False   2022-07-24 15:15:42.000000      N/A     Disabled
+3436    660     dllhost.exe     0xdf0d6a87a080  12      -       0       False   2022-07-24 15:15:43.000000      N/A     Disabled
+3568    828     WmiPrvSE.exe    0xdf0d6a876080  10      -       0       False   2022-07-24 15:15:43.000000      N/A     Disabled
+3748    660     msdtc.exe       0xdf0d6a871080  9       -       0       False   2022-07-24 15:15:44.000000      N/A     Disabled
+3968    1316    sihost.exe      0xdf0d6a86d080  13      -       1       False   2022-07-24 15:15:46.000000      N/A     Disabled
+3984    660     svchost.exe     0xdf0d690130c0  5       -       1       False   2022-07-24 15:15:46.000000      N/A     Disabled
+3496    660     svchost.exe     0xdf0d69b35400  9       -       1       False   2022-07-24 15:15:46.000000      N/A     Disabled
+2020    660     svchost.exe     0xdf0d69b3c300  8       -       0       False   2022-07-24 15:15:46.000000      N/A     Disabled
+2828    660     svchost.exe     0xdf0d69b47300  9       -       0       False   2022-07-24 15:15:46.000000      N/A     Disabled
+4100    1152    taskhostw.exe   0xdf0d69b8e400  8       -       1       False   2022-07-24 15:15:46.000000      N/A     Disabled
+4276    660     svchost.exe     0xdf0d69be7340  5       -       0       False   2022-07-24 15:15:46.000000      N/A     Disabled
+4324    660     svchost.exe     0xdf0d69be9380  8       -       0       False   2022-07-24 15:15:46.000000      N/A     Disabled
+4344    4276    ctfmon.exe      0xdf0d6935c380  9       -       1       False   2022-07-24 15:15:46.000000      N/A     Disabled
+4632    616     userinit.exe    0xdf0d693a8440  0       -       1       False   2022-07-24 15:15:47.000000      2022-07-24 15:16:18.000000      Disabled
+4712    4632    explorer.exe    0xdf0d693b1440  94      -       1       False   2022-07-24 15:15:48.000000      N/A     Disabled
+4736    660     SearchIndexer.  0xdf0d69d86300  16      -       0       False   2022-07-24 15:15:48.000000      N/A     Disabled
+5060    660     svchost.exe     0xdf0d69d993c0  8       -       1       False   2022-07-24 15:15:49.000000      N/A     Disabled
+5140    828     ShellExperienc  0xdf0d6a86f080  26      -       1       False   2022-07-24 15:15:51.000000      N/A     Disabled
+5272    828     SearchUI.exe    0xdf0d6a24a080  39      -       1       False   2022-07-24 15:15:51.000000      N/A     Disabled
+5396    828     RuntimeBroker.  0xdf0d6a249080  11      -       1       False   2022-07-24 15:15:52.000000      N/A     Disabled
+5520    828     RuntimeBroker.  0xdf0d6a247080  13      -       1       False   2022-07-24 15:15:53.000000      N/A     Disabled
+5696    828     ApplicationFra  0xdf0d6a243080  9       -       1       False   2022-07-24 15:15:54.000000      N/A     Disabled
+5704    828     MicrosoftEdge.  0xdf0d6a2450c0  24      -       1       False   2022-07-24 15:15:54.000000      N/A     Disabled
+5824    660     svchost.exe     0xdf0d6a23f080  9       -       0       False   2022-07-24 15:15:54.000000      N/A     Disabled
+6088    828     browser_broker  0xdf0d6a981080  7       -       1       False   2022-07-24 15:15:54.000000      N/A     Disabled
+3840    660     svchost.exe     0xdf0d6a97e080  3       -       0       False   2022-07-24 15:15:55.000000      N/A     Disabled
+6176    3840    Windows.WARP.J  0xdf0d6a97a080  2       -       0       False   2022-07-24 15:15:55.000000      N/A     Disabled
+6188    660     svchost.exe     0xdf0d6a979080  6       -       0       False   2022-07-24 15:15:55.000000      N/A     Disabled
+6428    828     RuntimeBroker.  0xdf0d69ced240  3       -       1       False   2022-07-24 15:15:56.000000      N/A     Disabled
+6536    828     MicrosoftEdgeC  0xdf0d6b7eb0c0  16      -       1       False   2022-07-24 15:15:56.000000      N/A     Disabled
+6592    6428    MicrosoftEdgeS  0xdf0d6b7e9080  9       -       1       False   2022-07-24 15:15:56.000000      N/A     Disabled
+6848    828     RuntimeBroker.  0xdf0d699af140  5       -       1       False   2022-07-24 15:15:58.000000      N/A     Disabled
+5036    828     RuntimeBroker.  0xdf0d6b7e0080  5       -       1       False   2022-07-24 15:16:00.000000      N/A     Disabled
+7356    660     svchost.exe     0xdf0d6a5a1300  16      -       0       False   2022-07-24 15:16:04.000000      N/A     Disabled
+7396    660     svchost.exe     0xdf0d6bb0d080  9       -       0       False   2022-07-24 15:16:05.000000      N/A     Disabled
+7512    828     smartscreen.ex  0xdf0d6bbed080  11      -       1       False   2022-07-24 15:16:08.000000      N/A     Disabled
+7632    4712    SecurityHealth  0xdf0d6b927480  3       -       1       False   2022-07-24 15:16:08.000000      N/A     Disabled
+7664    828     SystemSettings  0xdf0d6b6f4080  3       -       1       False   2022-07-24 15:16:09.000000      N/A     Disabled
+7672    660     SecurityHealth  0xdf0d6bbee080  14      -       0       False   2022-07-24 15:16:09.000000      N/A     Disabled
+8124    4712    vmtoolsd.exe    0xdf0d6bddd080  11      -       1       False   2022-07-24 15:16:13.000000      N/A     Disabled
+420     4712    OneDrive.exe    0xdf0d6a877080  22      -       1       False   2022-07-24 15:16:16.000000      N/A     Disabled
+6232    828     dllhost.exe     0xdf0d6beda440  7       -       1       False   2022-07-24 15:16:17.000000      N/A     Disabled
+8060    660     svchost.exe     0xdf0d6bf5b380  4       -       0       False   2022-07-24 15:16:25.000000      N/A     Disabled
+8784    660     svchost.exe     0xdf0d6bf14080  1       -       0       False   2022-07-24 15:16:37.000000      N/A     Disabled
+9100    420     Microsoft.Shar  0xdf0d69f81080  0       -       1       False   2022-07-24 15:16:43.000000      2022-07-24 15:16:52.000000      Disabled
+9108    660     svchost.exe     0xdf0d6a87d080  8       -       0       False   2022-07-24 15:16:43.000000      N/A     Disabled
+1720    660     svchost.exe     0xdf0d6a5e5540  24      -       0       False   2022-07-24 15:17:46.000000      N/A     Disabled
+1896    660     svchost.exe     0xdf0d6b7dc080  6       -       1       False   2022-07-24 15:17:46.000000      N/A     Disabled
+9052    660     svchost.exe     0xdf0d6b7e2080  5       -       0       False   2022-07-24 15:17:46.000000      N/A     Disabled
+4664    660     SgrmBroker.exe  0xdf0d6a240080  3       -       0       False   2022-07-24 15:17:47.000000      N/A     Disabled
+7504    660     svchost.exe     0xdf0d68ed4540  8       -       0       False   2022-07-24 15:17:47.000000      N/A     Disabled
+7124    660     svchost.exe     0xdf0d6a29e080  5       -       0       False   2022-07-24 15:17:47.000000      N/A     Disabled
+356     660     svchost.exe     0xdf0d69883500  7       -       0       False   2022-07-24 15:17:48.000000      N/A     Disabled
+4688    660     svchost.exe     0xdf0d69fb7080  0       -       0       False   2022-07-24 15:18:39.000000      2022-07-24 15:20:40.000000      Disabled
+3488    4712    powershell.exe  0xdf0d6a1cf0c0  14      -       1       False   2022-07-24 15:18:39.000000      N/A     Disabled
+1516    3488    conhost.exe     0xdf0d6a1d2080  4       -       1       False   2022-07-24 15:18:39.000000      N/A     Disabled
+912     660     svchost.exe     0xdf0d6bed5080  30      -       0       False   2022-07-24 15:18:45.000000      N/A     Disabled
+8048    660     svchost.exe     0xdf0d6b7e4080  4       -       0       False   2022-07-24 15:19:01.000000      N/A     Disabled
+8324    660     Sysmon.exe      0xdf0d6a87c080  14      -       0       False   2022-07-24 15:19:07.000000      N/A     Disabled
+8292    828     unsecapp.exe    0xdf0d6a861080  3       -       0       False   2022-07-24 15:19:07.000000      N/A     Disabled
+5164    660     svchost.exe     0xdf0d65596500  5       -       0       False   2022-07-24 15:20:12.000000      N/A     Disabled
+8748    828     RuntimeBroker.  0xdf0d6b9570c0  3       -       1       False   2022-07-24 15:22:03.000000      N/A     Disabled
+7616    3488    HOSTNAME.EXE    0xdf0d69d98080  0       -       1       False   2022-07-24 15:22:40.000000      2022-07-24 15:22:40.000000      Disabled
+4932    660     AtomicService.  0xdf0d6a983080  3       -       0       False   2022-07-24 15:22:43.000000      N/A     Disabled
+6456    5936    notepad.exe     0xdf0d6a878080  3       -       1       False   2022-07-24 15:22:47.000000      N/A     Disabled
+2620    828     WindowsInterna  0xdf0d6a24c080  33      -       1       False   2022-07-24 15:25:22.000000      N/A     Disabled
+4904    660     svchost.exe     0xdf0d6992f080  6       -       0       False   2022-07-24 15:26:10.000000      N/A     Disabled
+6244    660     MsMpEng.exe     0xdf0d69f86080  33      -       0       False   2022-07-24 15:26:55.000000      N/A     Disabled
+3580    660     NisSrv.exe      0xdf0d6a873080  4       -       0       False   2022-07-24 15:27:03.000000      N/A     Disabled
+7012    660     svchost.exe     0xdf0d69ba6080  12      -       0       False   2022-07-24 15:30:41.000000      N/A     Disabled
+4760    660     sppsvc.exe      0xdf0d69f2a080  4       -       0       False   2022-07-24 15:30:43.000000      N/A     Disabled
+7496    660     svchost.exe     0xdf0d69fac080  38      -       0       False   2022-07-24 15:30:44.000000      N/A     Disabled
+2016    660     svchost.exe     0xdf0d6562b500  4       -       0       False   2022-07-24 15:30:46.000000      N/A     Disabled
+5012    660     svchost.exe     0xdf0d6a97c080  5       -       0       False   2022-07-24 15:32:14.000000      N/A     Disabled
+3764    828     Skype4Life.exe  0xdf0d6a982080  41      -       1       False   2022-07-24 15:33:46.000000      N/A     Disabled
+1428    828     SkypeHelper.ex  0xdf0d6a151080  4       -       1       False   2022-07-24 15:33:50.000000      N/A     Disabled
+7352    828     backgroundTask  0xdf0d687f5080  8       -       1       False   2022-07-24 15:34:57.000000      N/A     Disabled
+7728    828     RuntimeBroker.  0xdf0d6890a0c0  7       -       1       False   2022-07-24 15:34:58.000000      N/A     Disabled
+9156    828     backgroundTask  0xdf0d6a3fe080  15      -       1       False   2022-07-24 15:35:17.000000      N/A     Disabled
+2340    828     RuntimeBroker.  0xdf0d6547a400  9       -       1       False   2022-07-24 15:35:18.000000      N/A     Disabled
+7164    7496    rundll32.exe    0xdf0d6b860080  6       -       1       False   2022-07-24 15:35:22.000000      N/A     Disabled
+9204    828     backgroundTask  0xdf0d6b63f080  10      -       1       False   2022-07-24 15:35:23.000000      N/A     Disabled
+4116    828     RuntimeBroker.  0xdf0d65e6b080  7       -       1       False   2022-07-24 15:35:23.000000      N/A     Disabled
+8400    828     backgroundTask  0xdf0d6a3fd540  8       -       1       False   2022-07-24 15:35:54.000000      N/A     Disabled
+6008    2832    cmd.exe         0xdf0d6bdf5080  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000      Disabled
+1784    6008    conhost.exe     0xdf0d6c5ce540  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000      Disabled
+4364    6008    ipconfig.exe    0xdf0d65e73540  0       -       0       False   2022-07-24 15:35:55.000000      2022-07-24 15:35:55.000000      Disabled
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.pslist --pid 4932
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output
+
+4932    660     AtomicService.  0xdf0d6a983080  3       -       0       False   2022-07-24 15:22:43.000000      N/A     Disabled
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.pslist --pid 660
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output
+
+660     508     services.exe    0xdf0d68e0d080  7       -       0       False   2022-07-24 15:15:38.000000      N/A     Disabled
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.pslist --pid 4932 --dump
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output
+
+4932    660     AtomicService.  0xdf0d6a983080  3       -       0       False   2022-07-24 15:22:43.000000      N/A     pid.4932.0xdf0000.dmp
+
+
+$ file pid.4932.0xdf0000.dmp
+pid.4932.0xdf0000.dmp: PE32+ executable (console) Intel 80386 Mono/.Net assembly, for MS Windows
+
+
+$ exiftool pid.4932.0xdf0000.dmp
+ExifTool Version Number         : 11.88
+File Name                       : pid.4932.0xdf0000.dmp
+Directory                       : .
+File Size                       : 32 kB
+File Modification Date/Time     : 2022:07:28 14:16:05+07:00
+File Access Date/Time           : 2022:07:28 14:16:38+07:00
+File Inode Change Date/Time     : 2022:07:28 14:16:05+07:00
+File Permissions                : rwxrwxrwx
+File Type                       : Win32 EXE
+File Type Extension             : exe
+MIME Type                       : application/octet-stream
+Machine Type                    : Intel 386 or later, and compatibles
+Time Stamp                      : 2018:09:02 20:15:50+07:00
+Image File Characteristics      : Executable, 32-bit
+PE Type                         : PE32+
+Linker Version                  : 11.0
+Code Size                       : 1536
+Initialized Data Size           : 2048
+Uninitialized Data Size         : 0
+Entry Point                     : 0x251e
+OS Version                      : 4.0
+Image Version                   : 0.0
+Subsystem Version               : 4.0
+Subsystem                       : Windows command line
+File Version Number             : 0.0.0.0
+Product Version Number          : 0.0.0.0
+File Flags Mask                 : 0x003f
+File Flags                      : (none)
+File OS                         : Win32
+Object File Type                : Executable application
+File Subtype                    : 0
+Language Code                   : Neutral
+Character Set                   : Unicode
+File Description                :
+File Version                    : 0.0.0.0
+Internal Name                   : AtomicService.exe
+Legal Copyright                 :
+Original File Name              : AtomicService.exe
+Product Version                 : 0.0.0.0
+Assembly Version                : 0.0.0.0
+
+
+$ shasum pid.4932.0xdf0000.dmp
+5da1990ff77805b28dd4c4b499e42f1a9e4f47f0  pid.4932.0xdf0000.dmp
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.dlllist.DllList --pid 6456
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     Process Base    Size    Name    Path    LoadTime        File output
+
+6456    notepad.exe     0x7ff78ad50000  0x43000 notepad.exe     C:\Windows\system32\notepad.exe 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa162b0000  0x1ed000        ntdll.dll       C:\Windows\SYSTEM32\ntdll.dll   2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15da0000  0xb3000 KERNEL32.DLL    C:\Windows\System32\KERNEL32.DLL        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13010000  0x293000        KERNELBASE.dll  C:\Windows\System32\KERNELBASE.dll      2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa16070000  0xa3000 ADVAPI32.dll    C:\Windows\System32\ADVAPI32.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15d00000  0x9e000 msvcrt.dll      C:\Windows\System32\msvcrt.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15780000  0x9e000 sechost.dll     C:\Windows\System32\sechost.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15830000  0x122000        RPCRT4.dll      C:\Windows\System32\RPCRT4.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa16180000  0x29000 GDI32.dll       C:\Windows\System32\GDI32.dll   2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa124d0000  0x19a000        gdi32full.dll   C:\Windows\System32\gdi32full.dll       2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12670000  0xa0000 msvcp_win.dll   C:\Windows\System32\msvcp_win.dll       2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12380000  0xfa000 ucrtbase.dll    C:\Windows\System32\ucrtbase.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13ab0000  0x197000        USER32.dll      C:\Windows\System32\USER32.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa124b0000  0x20000 win32u.dll      C:\Windows\System32\win32u.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa159d0000  0x32d000        combase.dll     C:\Windows\System32\combase.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12ec0000  0x7e000 bcryptPrimitives.dll    C:\Windows\System32\bcryptPrimitives.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15650000  0x127000        COMDLG32.dll    C:\Windows\System32\COMDLG32.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13c50000  0xa8000 shcore.dll      C:\Windows\System32\shcore.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ff9fd810000  0x279000        COMCTL32.dll    C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.379_none_05b83be8071c94a1\COMCTL32.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa161c0000  0x52000 SHLWAPI.dll     C:\Windows\System32\SHLWAPI.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa14160000  0x14f0000       SHELL32.dll     C:\Windows\System32\SHELL32.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa132b0000  0x4a000 cfgmgr32.dll    C:\Windows\System32\cfgmgr32.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12770000  0x74a000        windows.storage.dll     C:\Windows\System32\windows.storage.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa122d0000  0x24000 profapi.dll     C:\Windows\System32\profapi.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12320000  0x5d000 powrprof.dll    C:\Windows\System32\powrprof.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa122b0000  0x11000 kernel.appcore.dll      C:\Windows\System32\kernel.appcore.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12f40000  0x17000 cryptsp.dll     C:\Windows\System32\cryptsp.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa0ecf0000  0x1a8000        PROPSYS.dll     C:\Windows\system32\PROPSYS.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa139e0000  0xcb000 OLEAUT32.dll    C:\Windows\System32\OLEAUT32.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ff9ff5b0000  0x89000 WINSPOOL.DRV    C:\Windows\system32\WINSPOOL.DRV        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12480000  0x26000 bcrypt.dll      C:\Windows\System32\bcrypt.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa09390000  0x1d6000        urlmon.dll      C:\Windows\system32\urlmon.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa11830000  0x3d000 IPHLPAPI.DLL    C:\Windows\system32\IPHLPAPI.DLL        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa09720000  0x2a8000        iertutil.dll    C:\Windows\system32\iertutil.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa11ca0000  0xc000  CRYPTBASE.DLL   C:\Windows\system32\CRYPTBASE.DLL       2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa15ee0000  0x2e000 IMM32.DLL       C:\Windows\System32\IMM32.DLL   2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa108d0000  0x9c000 uxtheme.dll     C:\Windows\system32\uxtheme.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13e80000  0xa2000 clbcatq.dll     C:\Windows\System32\clbcatq.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa08ad0000  0x107000        MrmCoreR.dll    C:\Windows\System32\MrmCoreR.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13d00000  0x16a000        MSCTF.dll       C:\Windows\System32\MSCTF.dll   2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa10c20000  0x2e000 dwmapi.dll      C:\Windows\system32\dwmapi.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa13300000  0x1db000        CRYPT32.dll     C:\Windows\System32\CRYPT32.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa12300000  0x12000 MSASN1.dll      C:\Windows\System32\MSASN1.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ff9e9480000  0xc6000 efswrt.dll      C:\Windows\System32\efswrt.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa04d10000  0x1a000 MPR.dll C:\Windows\System32\MPR.dll     2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa0e1a0000  0x153000        wintypes.dll    C:\Windows\SYSTEM32\wintypes.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa109f0000  0x20d000        twinapi.appcore.dll     C:\Windows\System32\twinapi.appcore.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa109c0000  0x28000 RMCLIENT.dll    C:\Windows\System32\RMCLIENT.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ff9fb9f0000  0x6c000 oleacc.dll      C:\Windows\System32\oleacc.dll  2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa08d70000  0x1d000 T1055.001.dll   C:\AtomicRedTeam\atomics\T1055.001\src\x64\T1055.001.dll        2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa0aac0000  0xc000  Secur32.dll     C:\Windows\system32\Secur32.dll 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa121e0000  0x2f000 SSPICLI.DLL     C:\Windows\system32\SSPICLI.DLL 2022-07-24 15:22:47.000000      Disabled
+6456    notepad.exe     0x7ffa08690000  0x95000 TextInputFramework.dll  C:\Windows\System32\TextInputFramework.dll      2022-07-24 15:25:17.000000      Disabled
+6456    notepad.exe     0x7ffa0e3f0000  0x322000        CoreUIComponents.dll    C:\Windows\System32\CoreUIComponents.dll        2022-07-24 15:25:17.000000      Disabled
+6456    notepad.exe     0x7ffa11370000  0x31000 ntmarta.dll     C:\Windows\SYSTEM32\ntmarta.dll 2022-07-24 15:25:17.000000      Disabled
+6456    notepad.exe     0x7ffa0fd90000  0xe2000 CoreMessaging.dll       C:\Windows\System32\CoreMessaging.dll   2022-07-24 15:25:17.000000      Disabled
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.dlllist.DllList --pid 6456 --dump
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     Process Base    Size    Name    Path    LoadTime        File output
+
+6456    notepad.exe     0x7ff78ad50000  0x43000 notepad.exe     C:\Windows\system32\notepad.exe 2022-07-24 15:22:47.000000      pid.6456.notepad.exe.0x23c08682640.0x7ff78ad50000.dmp
+6456    notepad.exe     0x7ffa162b0000  0x1ed000        ntdll.dll       C:\Windows\SYSTEM32\ntdll.dll   2022-07-24 15:22:47.000000      pid.6456.ntdll.dll.0x23c086824b0.0x7ffa162b0000.dmp
+6456    notepad.exe     0x7ffa15da0000  0xb3000 KERNEL32.DLL    C:\Windows\System32\KERNEL32.DLL        2022-07-24 15:22:47.000000      pid.6456.KERNEL32.DLL.0x23c08682bd0.0x7ffa15da0000.dmp
+6456    notepad.exe     0x7ffa13010000  0x293000        KERNELBASE.dll  C:\Windows\System32\KERNELBASE.dll      2022-07-24 15:22:47.000000      pid.6456.KERNELBASE.dll.0x23c086831c0.0x7ffa13010000.dmp
+6456    notepad.exe     0x7ffa16070000  0xa3000 ADVAPI32.dll    C:\Windows\System32\ADVAPI32.dll        2022-07-24 15:22:47.000000      pid.6456.ADVAPI32.dll.0x23c086841d0.0x7ffa16070000.dmp
+6456    notepad.exe     0x7ffa15d00000  0x9e000 msvcrt.dll      C:\Windows\System32\msvcrt.dll  2022-07-24 15:22:47.000000      pid.6456.msvcrt.dll.0x23c08684580.0x7ffa15d00000.dmp
+6456    notepad.exe     0x7ffa15780000  0x9e000 sechost.dll     C:\Windows\System32\sechost.dll 2022-07-24 15:22:47.000000      pid.6456.sechost.dll.0x23c08684960.0x7ffa15780000.dmp
+6456    notepad.exe     0x7ffa15830000  0x122000        RPCRT4.dll      C:\Windows\System32\RPCRT4.dll  2022-07-24 15:22:47.000000      pid.6456.RPCRT4.dll.0x23c086851e0.0x7ffa15830000.dmp6456    notepad.exe     0x7ffa16180000  0x29000 GDI32.dll       C:\Windows\System32\GDI32.dll   2022-07-24 15:22:47.000000      pid.6456.GDI32.dll.0x23c086879b0.0x7ffa16180000.dmp
+6456    notepad.exe     0x7ffa124d0000  0x19a000        gdi32full.dll   C:\Windows\System32\gdi32full.dll       2022-07-24 15:22:47.000000      pid.6456.gdi32full.dll.0x23c08687d70.0x7ffa124d0000.dmp
+6456    notepad.exe     0x7ffa12670000  0xa0000 msvcp_win.dll   C:\Windows\System32\msvcp_win.dll       2022-07-24 15:22:47.000000      pid.6456.msvcp_win.dll.0x23c086885c0.0x7ffa12670000.dmp
+6456    notepad.exe     0x7ffa12380000  0xfa000 ucrtbase.dll    C:\Windows\System32\ucrtbase.dll        2022-07-24 15:22:47.000000      pid.6456.ucrtbase.dll.0x23c086889c0.0x7ffa12380000.dmp
+6456    notepad.exe     0x7ffa13ab0000  0x197000        USER32.dll      C:\Windows\System32\USER32.dll  2022-07-24 15:22:47.000000      pid.6456.USER32.dll.0x23c08688de0.0x7ffa13ab0000.dmp6456    notepad.exe     0x7ffa124b0000  0x20000 win32u.dll      C:\Windows\System32\win32u.dll  2022-07-24 15:22:47.000000      pid.6456.win32u.dll.0x23c08689220.0x7ffa124b0000.dmp
+6456    notepad.exe     0x7ffa159d0000  0x32d000        combase.dll     C:\Windows\System32\combase.dll 2022-07-24 15:22:47.000000      pid.6456.combase.dll.0x23c0868a520.0x7ffa159d0000.dmp
+6456    notepad.exe     0x7ffa12ec0000  0x7e000 bcryptPrimitives.dll    C:\Windows\System32\bcryptPrimitives.dll        2022-07-24 15:22:47.000000      pid.6456.bcryptPrimitives.dll.0x23c0868b100.0x7ffa12ec0000.dmp
+6456    notepad.exe     0x7ffa15650000  0x127000        COMDLG32.dll    C:\Windows\System32\COMDLG32.dll        2022-07-24 15:22:47.000000      pid.6456.COMDLG32.dll.0x23c0868be30.0x7ffa15650000.dmp
+6456    notepad.exe     0x7ffa13c50000  0xa8000 shcore.dll      C:\Windows\System32\shcore.dll  2022-07-24 15:22:47.000000      pid.6456.shcore.dll.0x23c0868c1c0.0x7ffa13c50000.dmp
+6456    notepad.exe     0x7ff9fd810000  0x279000        COMCTL32.dll    C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.379_none_05b83be8071c94a1\COMCTL32.dll 2022-07-24 15:22:47.000000      pid.6456.COMCTL32.dll.0x23c0868b6c0.0x7ff9fd810000.dmp
+6456    notepad.exe     0x7ffa161c0000  0x52000 SHLWAPI.dll     C:\Windows\System32\SHLWAPI.dll 2022-07-24 15:22:47.000000      pid.6456.SHLWAPI.dll.0x23c0868bbd0.0x7ffa161c0000.dmp
+6456    notepad.exe     0x7ffa14160000  0x14f0000       SHELL32.dll     C:\Windows\System32\SHELL32.dll 2022-07-24 15:22:47.000000      pid.6456.SHELL32.dll.0x23c0868c090.0x7ffa14160000.dmp
+6456    notepad.exe     0x7ffa132b0000  0x4a000 cfgmgr32.dll    C:\Windows\System32\cfgmgr32.dll        2022-07-24 15:22:47.000000      pid.6456.cfgmgr32.dll.0x23c0868bd00.0x7ffa132b0000.dmp
+6456    notepad.exe     0x7ffa12770000  0x74a000        windows.storage.dll     C:\Windows\System32\windows.storage.dll 2022-07-24 15:22:47.000000      pid.6456.windows.storage.dll.0x23c0868b970.0x7ffa12770000.dmp
+6456    notepad.exe     0x7ffa122d0000  0x24000 profapi.dll     C:\Windows\System32\profapi.dll 2022-07-24 15:22:47.000000      pid.6456.profapi.dll.0x23c0868baa0.0x7ffa122d0000.dmp
+6456    notepad.exe     0x7ffa12320000  0x5d000 powrprof.dll    C:\Windows\System32\powrprof.dll        2022-07-24 15:22:47.000000      pid.6456.powrprof.dll.0x23c0868bf60.0x7ffa12320000.dmp
+6456    notepad.exe     0x7ffa122b0000  0x11000 kernel.appcore.dll      C:\Windows\System32\kernel.appcore.dll  2022-07-24 15:22:47.000000      pid.6456.kernel.appcore.dll.0x23c0868c2f0.0x7ffa122b0000.dmp
+6456    notepad.exe     0x7ffa12f40000  0x17000 cryptsp.dll     C:\Windows\System32\cryptsp.dll 2022-07-24 15:22:47.000000      pid.6456.cryptsp.dll.0x23c0868b840.0x7ffa12f40000.dmp
+6456    notepad.exe     0x7ffa0ecf0000  0x1a8000        PROPSYS.dll     C:\Windows\system32\PROPSYS.dll 2022-07-24 15:22:47.000000      pid.6456.PROPSYS.dll.0x23c0868c420.0x7ffa0ecf0000.dmp
+6456    notepad.exe     0x7ffa139e0000  0xcb000 OLEAUT32.dll    C:\Windows\System32\OLEAUT32.dll        2022-07-24 15:22:47.000000      pid.6456.OLEAUT32.dll.0x23c08690a80.0x7ffa139e0000.dmp
+6456    notepad.exe     0x7ff9ff5b0000  0x89000 WINSPOOL.DRV    C:\Windows\system32\WINSPOOL.DRV        2022-07-24 15:22:47.000000      pid.6456.WINSPOOL.DRV.0x23c0868c550.0x7ff9ff5b0000.dmp
+6456    notepad.exe     0x7ffa12480000  0x26000 bcrypt.dll      C:\Windows\System32\bcrypt.dll  2022-07-24 15:22:47.000000      pid.6456.bcrypt.dll.0x23c08691070.0x7ffa12480000.dmp
+6456    notepad.exe     0x7ffa09390000  0x1d6000        urlmon.dll      C:\Windows\system32\urlmon.dll  2022-07-24 15:22:47.000000      pid.6456.urlmon.dll.0x23c0868c680.0x7ffa09390000.dmp
+6456    notepad.exe     0x7ffa11830000  0x3d000 IPHLPAPI.DLL    C:\Windows\system32\IPHLPAPI.DLL        2022-07-24 15:22:47.000000      pid.6456.IPHLPAPI.DLL.0x23c08690100.0x7ffa11830000.dmp
+6456    notepad.exe     0x7ffa09720000  0x2a8000        iertutil.dll    C:\Windows\system32\iertutil.dll        2022-07-24 15:22:47.000000      pid.6456.iertutil.dll.0x23c08690950.0x7ffa09720000.dmp
+6456    notepad.exe     0x7ffa11ca0000  0xc000  CRYPTBASE.DLL   C:\Windows\system32\CRYPTBASE.DLL       2022-07-24 15:22:47.000000      pid.6456.CRYPTBASE.DLL.0x23c08690f40.0x7ffa11ca0000.dmp
+6456    notepad.exe     0x7ffa15ee0000  0x2e000 IMM32.DLL       C:\Windows\System32\IMM32.DLL   2022-07-24 15:22:47.000000      pid.6456.IMM32.DLL.0x23c08690e10.0x7ffa15ee0000.dmp
+6456    notepad.exe     0x7ffa108d0000  0x9c000 uxtheme.dll     C:\Windows\system32\uxtheme.dll 2022-07-24 15:22:47.000000      pid.6456.uxtheme.dll.0x23c08691400.0x7ffa108d0000.dmp
+6456    notepad.exe     0x7ffa13e80000  0xa2000 clbcatq.dll     C:\Windows\System32\clbcatq.dll 2022-07-24 15:22:47.000000      pid.6456.clbcatq.dll.0x23c086906f0.0x7ffa13e80000.dmp
+6456    notepad.exe     0x7ffa08ad0000  0x107000        MrmCoreR.dll    C:\Windows\System32\MrmCoreR.dll        2022-07-24 15:22:47.000000      pid.6456.MrmCoreR.dll.0x23c08691660.0x7ffa08ad0000.dmp
+6456    notepad.exe     0x7ffa13d00000  0x16a000        MSCTF.dll       C:\Windows\System32\MSCTF.dll   2022-07-24 15:22:47.000000      pid.6456.MSCTF.dll.0x23c08690bb0.0x7ffa13d00000.dmp
+6456    notepad.exe     0x7ffa10c20000  0x2e000 dwmapi.dll      C:\Windows\system32\dwmapi.dll  2022-07-24 15:22:47.000000      pid.6456.dwmapi.dll.0x23c0868ffd0.0x7ffa10c20000.dmp
+6456    notepad.exe     0x7ffa13300000  0x1db000        CRYPT32.dll     C:\Windows\System32\CRYPT32.dll 2022-07-24 15:22:47.000000      pid.6456.CRYPT32.dll.0x23c08690ce0.0x7ffa13300000.dmp
+6456    notepad.exe     0x7ffa12300000  0x12000 MSASN1.dll      C:\Windows\System32\MSASN1.dll  2022-07-24 15:22:47.000000      pid.6456.MSASN1.dll.0x23c086905c0.0x7ffa12300000.dmp
+6456    notepad.exe     0x7ff9e9480000  0xc6000 efswrt.dll      C:\Windows\System32\efswrt.dll  2022-07-24 15:22:47.000000      pid.6456.efswrt.dll.0x23c086911a0.0x7ff9e9480000.dmp
+6456    notepad.exe     0x7ffa04d10000  0x1a000 MPR.dll C:\Windows\System32\MPR.dll     2022-07-24 15:22:47.000000      pid.6456.MPR.dll.0x23c086918c0.0x7ffa04d10000.dmp
+6456    notepad.exe     0x7ffa0e1a0000  0x153000        wintypes.dll    C:\Windows\SYSTEM32\wintypes.dll        2022-07-24 15:22:47.000000      pid.6456.wintypes.dll.0x23c08690820.0x7ffa0e1a0000.dmp
+6456    notepad.exe     0x7ffa109f0000  0x20d000        twinapi.appcore.dll     C:\Windows\System32\twinapi.appcore.dll 2022-07-24 15:22:47.000000      pid.6456.twinapi.appcore.dll.0x23c086912d0.0x7ffa109f0000.dmp
+6456    notepad.exe     0x7ffa109c0000  0x28000 RMCLIENT.dll    C:\Windows\System32\RMCLIENT.dll        2022-07-24 15:22:47.000000      pid.6456.RMCLIENT.dll.0x23c08691530.0x7ffa109c0000.dmp
+6456    notepad.exe     0x7ff9fb9f0000  0x6c000 oleacc.dll      C:\Windows\System32\oleacc.dll  2022-07-24 15:22:47.000000      pid.6456.oleacc.dll.0x23c086919f0.0x7ff9fb9f0000.dmp
+6456    notepad.exe     0x7ffa08d70000  0x1d000 T1055.001.dll   C:\AtomicRedTeam\atomics\T1055.001\src\x64\T1055.001.dll        2022-07-24 15:22:47.000000      pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+6456    notepad.exe     0x7ffa0aac0000  0xc000  Secur32.dll     C:\Windows\system32\Secur32.dll 2022-07-24 15:22:47.000000      pid.6456.Secur32.dll.0x23c08691b20.0x7ffa0aac0000.dmp
+6456    notepad.exe     0x7ffa121e0000  0x2f000 SSPICLI.DLL     C:\Windows\system32\SSPICLI.DLL 2022-07-24 15:22:47.000000      pid.6456.SSPICLI.DLL.0x23c08691d80.0x7ffa121e0000.dmp
+6456    notepad.exe     0x7ffa08690000  0x95000 TextInputFramework.dll  C:\Windows\System32\TextInputFramework.dll      2022-07-24 15:25:17.000000      pid.6456.TextInputFramework.dll.0x23c08690230.0x7ffa08690000.dmp
+6456    notepad.exe     0x7ffa0e3f0000  0x322000        CoreUIComponents.dll    C:\Windows\System32\CoreUIComponents.dll        2022-07-24 15:25:17.000000      pid.6456.CoreUIComponents.dll.0x23c08690360.0x7ffa0e3f0000.dmp
+6456    notepad.exe     0x7ffa11370000  0x31000 ntmarta.dll     C:\Windows\SYSTEM32\ntmarta.dll 2022-07-24 15:25:17.000000      pid.6456.ntmarta.dll.0x23c086e7af0.0x7ffa11370000.dmp
+6456    notepad.exe     0x7ffa0fd90000  0xe2000 CoreMessaging.dll       C:\Windows\System32\CoreMessaging.dll   2022-07-24 15:25:17.000000      pid.6456.CoreMessaging.dll.0x23c086e80e0.0x7ffa0fd90000.dmp
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ file dll_dump/pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+dll_dump/pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp: PE32+ executable (DLL) (GUI) x86-64, for MS Windows
+
+
+$ exiftool dll_dump/pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+ExifTool Version Number         : 11.88
+File Name                       : pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+Directory                       : dll_dump
+File Size                       : 116 kB
+File Modification Date/Time     : 2022:07:28 14:29:49+07:00
+File Access Date/Time           : 2022:07:28 14:33:03+07:00
+File Inode Change Date/Time     : 2022:07:28 14:30:34+07:00
+File Permissions                : rwxrwxrwx
+File Type                       : Win64 DLL
+File Type Extension             : dll
+MIME Type                       : application/octet-stream
+Machine Type                    : AMD AMD64
+Time Stamp                      : 2018:05:24 05:17:58+07:00
+Image File Characteristics      : Executable, Large address aware, DLL
+PE Type                         : PE32+
+Linker Version                  : 14.14
+Code Size                       : 54784
+Initialized Data Size           : 50688
+Uninitialized Data Size         : 0
+Entry Point                     : 0x1734
+OS Version                      : 6.0
+Image Version                   : 0.0
+Subsystem Version               : 6.0
+Subsystem                       : Windows GUI
+
+
+$ shasum dll_dump/pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+75aa72660c66e32abd2d21dc9c133aae4d1dacb7  dll_dump/pid.6456.T1055.001.dll.0x23c08691c50.0x7ffa08d70000.dmp
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.getsids.GetSIDs --pid 3488 6456 4932
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+PID     Process SID     Name
+
+3488    powershell.exe  S-1-5-21-321011808-3761883066-353627080-1000    IEUser
+3488    powershell.exe  S-1-5-21-321011808-3761883066-353627080-513     Domain Users
+3488    powershell.exe  S-1-1-0 Everyone
+3488    powershell.exe  S-1-5-114       Local Account (Member of Administrators)
+3488    powershell.exe  S-1-5-32-544    Administrators
+3488    powershell.exe  S-1-5-32-545    Users
+3488    powershell.exe  S-1-5-4 Interactive
+3488    powershell.exe  S-1-2-1 Console Logon (Users who are logged onto the physical console)
+3488    powershell.exe  S-1-5-11        Authenticated Users
+3488    powershell.exe  S-1-5-15        This Organization
+3488    powershell.exe  S-1-5-113       Local Account
+3488    powershell.exe  S-1-5-5-0-155162        Logon Session
+3488    powershell.exe  S-1-2-0 Local (Users with the ability to log in locally)
+3488    powershell.exe  S-1-5-64-10     NTLM Authentication
+3488    powershell.exe  S-1-16-12288    High Mandatory Level
+4932    AtomicService.  S-1-5-18        Local System
+4932    AtomicService.  S-1-5-32-544    Administrators
+4932    AtomicService.  S-1-1-0 Everyone
+4932    AtomicService.  S-1-5-11        Authenticated Users
+4932    AtomicService.  S-1-16-16384    System Mandatory Level
+6456    notepad.exe     S-1-5-21-321011808-3761883066-353627080-1000    IEUser
+6456    notepad.exe     S-1-5-21-321011808-3761883066-353627080-513     Domain Users
+6456    notepad.exe     S-1-1-0 Everyone
+6456    notepad.exe     S-1-5-114       Local Account (Member of Administrators)
+6456    notepad.exe     S-1-5-32-544    Administrators
+6456    notepad.exe     S-1-5-32-545    Users
+6456    notepad.exe     S-1-5-4 Interactive
+6456    notepad.exe     S-1-2-1 Console Logon (Users who are logged onto the physical console)
+6456    notepad.exe     S-1-5-11        Authenticated Users
+6456    notepad.exe     S-1-5-15        This Organization
+6456    notepad.exe     S-1-5-113       Local Account
+6456    notepad.exe     S-1-5-5-0-155162        Logon Session
+6456    notepad.exe     S-1-2-0 Local (Users with the ability to log in locally)
+6456    notepad.exe     S-1-5-64-10     NTLM Authentication
+6456    notepad.exe     S-1-16-12288    High Mandatory Level
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.registry.printkey.PrintKey -h
+Volatility 3 Framework 2.3.0
+usage: volatility windows.registry.printkey.PrintKey [-h] [--offset OFFSET] [--key KEY] [--recurse]
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --offset OFFSET  Hive Offset
+  --key KEY        Key to start from
+  --recurse        Recurses through keys
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.registry.hivelist.HiveList
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+Offset  FileFullPath    File output
+
+0xa78dbb40d000          Disabled
+0xa78dbb44b000  \REGISTRY\MACHINE\SYSTEM        Disabled
+0xa78dbb4a4000  \REGISTRY\MACHINE\HARDWARE      Disabled
+0xa78dbe7d0000  \Device\HarddiskVolume1\Boot\BCD        Disabled
+0xa78dbbc8d000  \SystemRoot\System32\Config\SOFTWARE    Disabled
+0xa78dbe8b3000  \SystemRoot\System32\Config\DEFAULT     Disabled
+0xa78dbe97b000  \SystemRoot\System32\Config\SECURITY    Disabled
+0xa78dbea0a000  \SystemRoot\System32\Config\SAM Disabled
+0xa78dbeaf6000  \??\C:\Windows\ServiceProfiles\NetworkService\NTUSER.DAT        Disabled
+0xa78dbec62000  \SystemRoot\System32\Config\BBI Disabled
+0xa78dbecc1000  \??\C:\Windows\ServiceProfiles\LocalService\NTUSER.DAT  Disabled
+0xa78dbf8b7000  \??\C:\Windows\AppCompat\Programs\Amcache.hve   Disabled
+0xa78dc01a1000  \??\C:\Users\IEUser\ntuser.dat  Disabled
+0xa78dc01a6000  \??\C:\Users\IEUser\AppData\Local\Microsoft\Windows\UsrClass.dat        Disabled
+0xa78dc0a0e000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.ShellExperienceHost_10.0.17763.1_neutral_neutral_cw5n1h2txyewy\ActivationStore.dat   Disabled
+0xa78dc0ac2000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\Settings\settings.dat    Disabled
+0xa78dc0ae2000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Cortana_1.11.5.17763_neutral_neutral_cw5n1h2txyewy\ActivationStore.dat       Disabled
+0xa78dc0bc8000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.Windows.Cortana_cw5n1h2txyewy\Settings\settings.dat        Disabled
+0xa78dc0905000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftEdge_44.17763.1.0_neutral__8wekyb3d8bbwe\ActivationStore.dat     Disabled
+0xa78dc0cd2000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\Settings\settings.dat  Disabled
+0xa78dc1432000  \??\C:\Windows\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization\State\dosvcState.dat Disabled
+0xa78dc56ed000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\InputApp_1000.17763.1.0_neutral_neutral_cw5n1h2txyewy\ActivationStore.dat   Disabled
+0xa78dc54bf000  \??\C:\Users\IEUser\AppData\Local\Packages\InputApp_cw5n1h2txyewy\Settings\settings.dat Disabled
+0xa78dc420b000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.SkypeApp_14.26.95.0_x64__kzf8qxf38zg5c\ActivationStore.dat        Disabled
+0xa78dc3dfb000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\Settings\settings.dat       Disabled
+0xa78dc7492000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftOfficeHub_18.2205.1091.0_x64__8wekyb3d8bbwe\ActivationStore.dat  Disabled
+0xa78dc7589000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe\Settings\settings.dat     Disabled
+0xa78dc75df000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.OneConnect_5.1807.1991.0_x64__8wekyb3d8bbwe\ActivationStore.dat   Disabled
+0xa78dc6c95000  \??\C:\Users\IEUser\AppData\Local\Packages\Microsoft.OneConnect_8wekyb3d8bbwe\Settings\settings.dat     Disabled
+0xa78dc77f6000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsAlarms_10.2101.28.0_x64__8wekyb3d8bbwe\ActivationStore.dat Disabled
+0xa78dc4398000  \??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsStore_12107.1001.15.0_x64__8wekyb3d8bbwe\ActivationStore.dat       Disabled
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f mem-win10.vmem windows.registry.printkey.PrintKey --offset 0xa78dc01a6000 --key AtomicRedTeam
+Volatility 3 Framework 2.3.0
+Progress:  100.00               PDB scanning finished
+Last Write Time Hive Offset     Type    Key     Name    Data    Volatile
+
+2022-07-24 15:22:30.000000      0xa78dc01a6000  REG_SZ  \??\C:\Users\IEUser\AppData\Local\Microsoft\Windows\UsrClass.dat\AtomicRedTeam  ART     "U2V0LUNvbnRlbnQgLXBhdGggIiRlbnY6U3lzdGVtUm9vdC9UZW1wL2FydC1tYXJrZXIudHh0IiAtdmFsdWUgIkhlbGxvIGZyb20gdGhlIEF0b21pYyBSZWQgVGVhbSI=" False
+
+
+$ echo "U2V0LUNvbnRlbnQgLXBhdGggIiRlbnY6U3lzdGVtUm9vdC9UZW1wL2FydC1tYXJrZXIudHh0IiAtdmFsdWUgIkhlbGxvIGZyb20gdGhlIEF0b21pYyBSZWQgVGVhbSI=" | base64 -d
+Set-Content -path "$env:SystemRoot/Temp/art-marker.txt" -value "Hello from the Atomic Red Team"
+
+----------------------------------------------------------------------------------------------------------------------

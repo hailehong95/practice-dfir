@@ -1,0 +1,147 @@
+# Add the plaso GIFT repository
+$ sudo add-apt-repository ppa:gift/stable
+
+# Install plaso
+$ sudo apt-get install plaso-tools
+
+# Install qemu tools
+$ sudo apt install qemu-utils
+
+# Converting the VHD (Virtualbox) to RAW with qemu
+$ qemu-img convert -O raw <vm-name>-Disk.vhd <vm-name>-Disk.raw
+
+# Converting the VHD (VMWare) to RAW with qemu
+$ qemu-img convert -f vmdk -O raw <vm-name>-Disk.vmdk <vm-name>-Disk.raw
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ vol -f <vm-name>.vmem timeliner.Timeliner --create-bodyfile
+
+----------------------------------------------------------------------------------------------------------------------
+# Create a plaso file with log2timeline from the raw disk file
+$ log2timeline.py --storage-file disk.plaso <vm-name>-Disk.raw
+plaso - log2timeline version 20220428
+
+Source path             : /Evidence/Disk/<vm-name>-Disk.raw
+Source type             : storage media image
+Processing time         : 02:20:58
+
+Tasks:          Queued  Processing      Merging         Abandoned       Total
+                0       0               0               0               161086
+
+Identifier      PID     Status          Memory          Sources         Events          File
+Main            2139    completed       295.4 MiB       161086 (0)      1477744 (0)
+Worker_00       2144    idle            216.8 MiB       33718 (0)       118242 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Update_2022-07-25_050834_1752-1244.loggz
+Worker_01       2146    idle            228.4 MiB       16658 (0)       469099 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Install_2019-03-19_130138_1820-1834.loggz
+Worker_02       2148    idle            312.1 MiB       15289 (0)       364877 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Install_2022-07-25_050741_4144-4112.loggz
+Worker_03       2150    idle            207.9 MiB       30855 (0)       128770 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Install-PerUser_2019-03-19_130517_290-4a8.loggz
+Worker_04       2154    idle            209.9 MiB       36968 (0)       128723 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Update_2019-03-19_130454_64c-cdc.loggz
+Worker_05       2156    idle            212.4 MiB       14580 (0)       152063 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Install-PerUser_2022-07-25_050743_4024-6904.loggz
+Worker_06       2160    idle            208.2 MiB       13017 (0)       115970 (0)      GZIP:\Users\IEUser\AppData\Local\Microsoft\OneDrive\logs\Personal\Install_2019-03-19_130510_131c-85c.loggz
+
+Processing completed.
+
+Number of warnings generated while extracting events: 11.
+
+Use pinfo to inspect warnings in more detail.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+# Validate plaso info
+$ pinfo.py disk.plaso
+
+************************** Plaso Storage Information ***************************
+            Filename : disk.plaso
+      Format version : 20211121
+Serialization format : json
+--------------------------------------------------------------------------------
+
+*********************************** Sessions ***********************************
+aff38fae-784b-4447-b014-fc4c1ade88ec : 2022-07-28T09:14:11.824218+00:00
+--------------------------------------------------------------------------------
+
+******************************** Event sources *********************************
+Total : 161086
+--------------------------------------------------------------------------------
+
+************************* Events generated per parser **************************
+           Parser (plugin) name : Number of events
+--------------------------------------------------------------------------------
+                        amcache : 222
+                 appcompatcache : 406
+                         bagmru : 14
+                            bam : 17
+          explorer_mountpoints2 : 3
+         explorer_programscache : 1
+                       filestat : 637021
+                            lnk : 432
+               mrulistex_string : 2
+mrulistex_string_and_shell_item : 3
+                  msie_webcache : 444
+                      msie_zone : 36
+                       networks : 4
+   olecf_automatic_destinations : 27
+                  olecf_default : 145
+         olecf_document_summary : 8
+                  olecf_summary : 105
+                           oxml : 17
+                             pe : 47787
+                       prefetch : 981
+                       setupapi : 136
+                    shell_items : 342
+                     userassist : 25
+                        usnjrnl : 258898
+           windows_boot_execute : 2
+                    windows_run : 9
+              windows_sam_users : 13
+               windows_services : 612
+               windows_shutdown : 2
+             windows_task_cache : 431
+               windows_timezone : 1
+             windows_typed_urls : 5
+                windows_version : 4
+                        winevtx : 72218
+                       winlogon : 4
+                 winreg_default : 457367
+                          Total : 1477744
+--------------------------------------------------------------------------------
+...
+
+----------------------------------------------------------------------------------------------------------------------
+
+$ log2timeline.py --parser=mactime --storage-file=disk.plaso volatility.body
+plaso - log2timeline version 20220428
+
+Source path             : analysis/timeline/volatility.body
+Source type             : single file
+Processing time         : 00:00:50
+
+Identifier      PID     Status          Memory          Sources         Events          File
+Main            2195    completed       186.9 MiB       1 (0)           558050 (955)    OS:analysis/timeline/volatility.body
+
+Processing completed.
+
+Number of warnings generated while extracting events: 48.
+
+Use pinfo to inspect warnings in more detail.
+
+----------------------------------------------------------------------------------------------------------------------
+
+# "date > '2022-07-23 00:00:00'" => sử dụng bộ lọc
+$ psort.py -o l2tcsv -w super-timeline.csv disk.plaso "date > '2022-07-23 00:00:00'"
+plaso - psort version 20220428
+
+Storage file            : disk.plaso
+Processing time         : 00:20:09
+
+Events:         Filtered        In time slice   Duplicates      MACB grouped    Total
+                1666485         0               91065           277575          2035794
+
+Identifier              PID     Status          Memory          Events          Tags            Reports
+Main                    2204    completed       342.1 MiB       369309 (0)      0 (0)           0 (0)
+
+Processing completed.
+
+----------------------------------------------------------------------------------------------------------------------
+
