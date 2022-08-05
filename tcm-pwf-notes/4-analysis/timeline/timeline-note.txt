@@ -10,7 +10,7 @@ $ sudo apt install qemu-utils
 # Converting the VHD (Virtualbox) to RAW with qemu
 $ qemu-img convert -O raw <vm-name>-Disk.vhd <vm-name>-Disk.raw
 
-# Converting the VHD (VMWare) to RAW with qemu
+# Converting the VMDK (VMWare) to RAW with qemu
 $ qemu-img convert -f vmdk -O raw <vm-name>-Disk.vmdk <vm-name>-Disk.raw
 
 ----------------------------------------------------------------------------------------------------------------------
